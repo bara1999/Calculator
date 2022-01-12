@@ -3,8 +3,10 @@ import CalButton from './CalButton';
 import Result from './Result';
 
 function Calculator(props) {
+
     const [result, setResult] = useState(0);
     const [firstNumber, setFirstNumber] = useState(0);
+    const digits=["c","+-","%","/","7",'8','9','*','4','5','6','-','1','2','3','+','0','.','='];
  
     const [operation, setOPeration] = useState("");
     const array = ["+", "-", "*","/"];
@@ -19,8 +21,14 @@ function Calculator(props) {
           console.log(result)
     
         }
-        else if (symbole==="C"){
+        else if (symbole==="c"){
             setResult(0);
+          }
+          else if(symbole==='+-'){
+            setResult(result*-1);
+          }
+          else if (symbole==="."){
+            setResult(result+".");
           }
           else if(symbole==='+-'){
             setResult(result*-1);
@@ -46,11 +54,11 @@ function Calculator(props) {
             else if(operation==='-'){
                 setResult(firstNumber-secoundNumber)
             }
-            else if(operation==='x'){
+            else if(operation==='*'){
                 setResult(firstNumber*secoundNumber)
             }
             else if(operation==='/'){
-                setResult(firstNumber+secoundNumber)
+                setResult((firstNumber/secoundNumber).toFixed(5))
             }
           }
    
@@ -64,7 +72,13 @@ function Calculator(props) {
             <div className="calculator">
                 <Result result={result}/>
                 <div className="calculator-buttons">
-                <CalButton value="C"  onClick={handleClearInput}/>
+
+                {digits.map((digit,index)=>{
+                    return(
+                        <CalButton key={index} value={digit} onClick={handleClearInput}/>
+                    )
+                })
+                /* <CalButton value="C"  onClick={handleClearInput}/>
                 <CalButton value="+-"  onClick={handleClearInput}/>
                 <CalButton value="%"  onClick={handleClearInput}/>
                 <CalButton value="/"  onClick={handleClearInput}/>
@@ -82,7 +96,7 @@ function Calculator(props) {
                 <CalButton value="+"  onClick={handleClearInput}/>
                 <CalButton value="0"  onClick={handleClearInput}/>
                 <CalButton value="."  onClick={handleClearInput}/>
-                <button className = "equal" value = "=" onClick = {handleClearInput}> =</button>
+                <button className = "equal" value = "=" onClick = {handleClearInput}> =</button> */}
                 </div>
 
             </div>
