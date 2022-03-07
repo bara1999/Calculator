@@ -1,3 +1,11 @@
+## Caluclator:
+
+
+In the projet ypu can do the basic math operations.
+
+
+
+![cal1!](https://user-images.githubusercontent.com/67365371/156835750-9f7dec74-fe3e-4cd1-ad98-fba4f7940978.PNG)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
